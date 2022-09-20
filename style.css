@@ -1,14 +1,6 @@
 body {
-  /* background: linear-gradient(
-    to bottom,
-    rgb(217, 66, 66),
-    rgb(71, 141, 207),
-    rgb(42, 42, 230)
-  ); */
   background: url('Background.png');
-  /* background-repeat: no-repeat; */
   background-size: contain;
-
   width: 100vw;
   height: 100vh;
   overflow: hidden;
