@@ -17,6 +17,8 @@ let ravenInternal = 700;
 let lastTime = 0;
 
 let ravens = [];
+
+//creating class that is the blueprint of an enemy character
 class Raven {
   constructor() {
     this.spriteWidth = 266;
@@ -71,7 +73,7 @@ class Raven {
     }
     if (this.x < 0 - this.width) gameOver = true;
   }
-
+  //drawing element on canvas
   draw() {
     collisionCtx.fillStyle = this.color;
     collisionCtx.fillRect(this.x, this.y, this.width, this.height);
@@ -90,6 +92,9 @@ class Raven {
 }
 
 let explosions = [];
+
+//creating class that is the blueprint of an explosion animation
+
 class Explosion {
   constructor(x, y, size) {
     this.image = new Image(x, y);
@@ -115,6 +120,7 @@ class Explosion {
       if (this.frame > 5) this.markedForDeletion = true;
     }
   }
+  //drawing element on canvas
   draw() {
     ctx.drawImage(
       this.image,
@@ -159,6 +165,7 @@ class Particle {
   }
 }
 
+//displaying score
 function drawScore() {
   ctx.fillStyle = 'black';
   ctx.fillText('Score: ' + score, 50, 105);
@@ -166,6 +173,7 @@ function drawScore() {
   ctx.fillText('Score: ' + score, 55, 100);
 }
 
+//displaying game over and final score
 function drawGameOver() {
   ctx.font = '80px Impact';
   ctx.textAlign = 'center';
@@ -188,6 +196,7 @@ function drawGameOver() {
   );
 }
 
+//click event listener, that triggers shooting
 window.addEventListener('click', (e) => {
   const detectedPixelColor = collisionCtx.getImageData(e.x, e.y, 1, 1);
   console.log(detectedPixelColor);
@@ -208,6 +217,7 @@ window.addEventListener('click', (e) => {
   });
 });
 
+//function responsible for animating and displaying every element
 function animate(timestamp) {
   collisionCtx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
